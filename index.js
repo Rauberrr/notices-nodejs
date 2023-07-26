@@ -40,14 +40,15 @@ async function SerchNotices() {
             await fs.writeFileSync('notice.json', listJSON);
             console.log('file create sucessfully')
             return
-
-    } catch (error) {
-        console.log('Algo errado aconteceu, verifique com o suporte. Erro: '+error + '\n Prosseguimos tentando...');
-        a1();
-    }
+            
+        } catch (error) {
+            console.log('Algo errado aconteceu, verifique com o suporte. Erro: '+error + '\n Prosseguimos tentando...');
+            SerchNotices();
+        }
+        browser.close();
 }
 
-a1();
+SerchNotices();
 
 
 
