@@ -9,7 +9,7 @@ async function SerchProducts() {
     const url = 'https://www.mercadolivre.com.br/'
     const searchFor = 'mouse'
 
-        const browser = await pup.launch({headless : true});
+        const browser = await pup.launch({headless : false});
         const page = await browser.newPage();
     console.log('initial');
 
@@ -50,7 +50,7 @@ async function SerchProducts() {
     
     try {
         const listJSON = await JSON.stringify(list, null, 2);
-        await fs.writeFileSync('notice.json', listJSON);
+        await fs.writeFileSync('mercado-livre.json', listJSON);
         console.log('file create sucessfully')
     } catch(err) {
         console.log('err to create file: ' + err);

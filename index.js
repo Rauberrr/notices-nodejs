@@ -2,13 +2,13 @@ const fs = require('fs');
 const pup = require('puppeteer');
 
 async function SerchNotices() {
-    
-    let c = 0;
+
+    let c = 1;
     const list = [];
     const url = 'https://olhardigital.com.br/'
 
     try {
-        const browser = await pup.launch({headless : true});
+        const browser = await pup.launch({headless : false});
         const page = await browser.newPage();
         await page.setDefaultNavigationTimeout(0);
     console.log('initial');
@@ -19,7 +19,7 @@ async function SerchNotices() {
         const noticias = await page.$$eval('a.cardV2.cardV2-incover', el => el.map(noticia => noticia.href));
         
         for(const noticia of noticias) {
-            if(c === 4) continue;
+            if(c === 5) continue;
             console.log('page: ' + c);
             await page.goto(noticia);
             await page.waitForSelector('.banner.banner-noticia-destaque h1');
